@@ -3,6 +3,7 @@ from typing import Optional
 from flask import Flask
 from flask_smorest import Api
 from db import db
+import models
 
 def create_app(db_url:Optional[str]=None):
     app = Flask(__name__)
