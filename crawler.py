@@ -39,4 +39,8 @@ def collect_new_data():
     pokemon_list = get_pokemon_list(offset=db_total)
 
     if len(pokemon_list) > 0:
-        pass
+        for pokemon in pokemon_list:
+            print(f"--- Making request #{pokemon_list.index(pokemon)+1} of {len(pokemon_list)} ---")
+            response_json = make_get_request(pokemon["url"])    # Get the pokemon's data
+            if check_existing("pokemon", response_json["name"]) == False:    # Checks if the pokemon already exists
+                pass
