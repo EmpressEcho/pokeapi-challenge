@@ -39,3 +39,10 @@ class Pokemon(MethodView):
 class PokemonCount(MethodView):
     def get(self):
         return {"count": PokemonModel.query.count()}
+    
+@blp.route("/pokemon/<string:pokemon_name>")
+class NamedPokemon(MethodView):
+    @blp.response(200, PokemonSchema)
+    def get(self, pokemon_name):
+        pokemon = PokemonModel.query.filter_by(name=pokemon_name).first()
+        return pokemon
