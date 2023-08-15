@@ -26,7 +26,13 @@ def post_data_to_db(endpoint: str, data: Optional[dict]=None) -> dict:
     return response_json
 
 def check_existing(endpoint: str, name:str):
-    pass
+    url = f"http://127.0.0.1:5000/{endpoint}/{name}"
+    try:
+        id = make_get_request(url)["id"]    # Get the id of a pokemon by its name, if it exists
+        return id
+    except:
+        return False    # If it does not exist, return False
+
 
 def collect_new_data():
     db_total = get_database_total()
