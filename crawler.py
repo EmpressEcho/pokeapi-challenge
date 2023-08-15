@@ -7,7 +7,8 @@ def make_get_request(url: str) -> dict:
     return response_json
 
 def get_database_total() -> int:
-    pass
+    count = make_get_request("http://127.0.0.1:5000/pokemon/count")["count"]  # Make a GET request to the database API to fetch a count of the pokemon already stored
+    return count
 
 def get_pokemon_list(offset: int) -> int:
     url = f"https://pokeapi.co/api/v2/pokemon/?limit=10000&offset={offset}"

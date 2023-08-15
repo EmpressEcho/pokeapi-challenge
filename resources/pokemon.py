@@ -34,3 +34,8 @@ class Pokemon(MethodView):
     def get(self, pokemon_id):
         pokemon = PokemonModel.query.get_or_404(pokemon_id)    # Fetches the pokemon from the database by the primary key, and if it cannot find it, automatically aborts with a 404
         return pokemon
+    
+@blp.route("/pokemon/count")
+class PokemonCount(MethodView):
+    def get(self):
+        return {"count": PokemonModel.query.count()}
