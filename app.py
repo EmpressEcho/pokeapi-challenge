@@ -19,6 +19,10 @@ def create_app(db_url:Optional[str]=None):
     db.init_app(app)
 
     api = Api(app)
+    api.register_blueprint(PokemonBlueprint)
+    api.register_blueprint(MoveBlueprint)
+    api.register_blueprint(TypeBlueprint)
+    api.register_blueprint(UpdateBlueprint)
 
     with app.app_context():
         db.create_all()
